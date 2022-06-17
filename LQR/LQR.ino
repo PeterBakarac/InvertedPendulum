@@ -18,7 +18,7 @@ int RSW = 15;
 float cart = 0.0;
 uint32_t u = 0;
 boolean ON = 0;
-boolean zacal = true;
+boolean started = true;
 boolean mid = false;
 int pulls = 0;
 
@@ -26,7 +26,7 @@ int pulls = 0;
 int direct = 1;
 float kc1 = 29.514661;
 float kc2 = 4.560546;
-float kc3 = -2.681323*1.9;
+float kc3 = -2.681323;
 float kc4 = -3.282847;
 
 float dT = 0.008;
@@ -91,10 +91,10 @@ void loop() {
     cart = ((float)MotoEncoder.getCount())/20/1000; // Cart velocity in m
     
     //Serial.println(String(y) + " " + String(cart));
-    if(zacal){
+    if(started){
       if(pulls <= -798 && pulls >= -802){
         ON = true;
-        zacal = false;
+        started = false;
         av1 = 0;
         av2 = 0;
         av3 = 0;
