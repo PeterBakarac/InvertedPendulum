@@ -24,10 +24,10 @@ int pulls = 0;
 
 
 int direct = 1;
-float kc1 = 29.514661;
-float kc2 = 4.560546;
-float kc3 = -2.681323;
-float kc4 = -3.282847;
+float kc1 = 62;
+float kc2 = 10;
+float kc3 = -3;
+float kc4 = -3;
 
 float dT = 0.008;
 float av1 = 0.0;
@@ -67,6 +67,10 @@ void setup() {
   /* Start an alarm */
   timerAlarmEnable(timer);
 
+  pinMode(pulPin, OUTPUT);
+  pinMode(dirPin, OUTPUT);
+  pinMode(enPin, OUTPUT);
+
   ledcSetup(channel, freq, resolution);
   ledcAttachPin(pulPin, channel);
   
@@ -74,9 +78,6 @@ void setup() {
   MotoEncoder.attachFullQuad(27, 26);
   // use pin 17 and 16 for the second encoder
   PendEncoder.attachFullQuad(33, 32);
-  pinMode(pulPin, OUTPUT);
-  pinMode(dirPin, OUTPUT);
-  pinMode(enPin, OUTPUT);
   
   digitalWrite(pulPin, LOW);
   digitalWrite(dirPin, HIGH);
